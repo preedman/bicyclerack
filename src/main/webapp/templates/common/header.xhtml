@@ -8,18 +8,9 @@
 <p:panel>
 	<div style="height: 130px">
 		<h:form id="headerForm">
-			<p:graphicImage value="/resources/images/logo/logo.png" width="250"
+			<p:graphicImage value="/resources/images/logo/bicyclerack.jpg" width="250"
 				height="95" />
-			<p:carousel itemStyleClass="carItem" pageLinks="4"
-				style="margin-top:-10px;margin-left:17%" autoPlayInterval="4000"
-				numVisible="1" effect="easeInStrong" circular="true">
-				<p:graphicImage value="/resources/images/gallery/post1.jpg"
-					width="350" height="100" />
-				<p:graphicImage value="/resources/images/gallery/post2.jpg"
-					width="350" height="100" />
-				<p:graphicImage value="/resources/images/gallery/post3.jpg"
-					width="350" height="100" />
-			</p:carousel>
+			
 			<p:outputPanel style="float:right"
 				rendered="#{view.viewId != '/views/login.xhtml'}">
 				<h:commandLink action="/views/login.xhtml?faces-redirect=true">

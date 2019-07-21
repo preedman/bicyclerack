@@ -29,16 +29,13 @@ public class LoginController implements Serializable {
 	public String validateUser() throws SQLException {
 		FacesMessage msg = null;
 		boolean isValidUser = false;
-		if (username.equalsIgnoreCase("admin")
-				&& password.equalsIgnoreCase("admin")) {
-			return "/views/admin?faces-redirect=true";
-		}
+		
 
 		LoginDAO dao = new LoginDAO();
 		isValidUser = dao.validateUser(username, password);
 
 		if (isValidUser) {
-			return "/views/jobposts?faces-redirect=true";
+			return "/views/index.xhtml?faces-redirect=true";
 		} else {
 			msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error",
 					"Invalid credentials");
@@ -48,21 +45,7 @@ public class LoginController implements Serializable {
 
 	}
 
-	public void changepassword() throws SQLException {
-		LoginDAO dao = new LoginDAO();
-		boolean confirm = false;
-		confirm = dao.changepassword(username, password, newpassword);
-
-		if (confirm) {
-			FacesMessage msg = new FacesMessage("change password is successful");
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-		} else {
-			FacesMessage msg = new FacesMessage(
-					"change password is unsuccessful",
-					"Please try with valid data");
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-		}
-	}
+	
 
 	public String getUsername() {
 		return username;

@@ -18,7 +18,7 @@ public class LoginDAO {
 	public LoginDAO() throws SQLException {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/blueprintsdb");
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/brisbane_bicycle_racks");
 			if (ds == null) {
 				throw new SQLException("Can't get data source");
 			}
@@ -34,33 +34,13 @@ public class LoginDAO {
 
 	}
 
-	public boolean changepassword(String userid, String oldpassword,
-			String newpassword) {
-		try {
-			// Persist employee
-			PreparedStatement ps = con
-					.prepareStatement("UPDATE blueprintsdb.employee SET password='"
-							+ newpassword
-							+ "' WHERE userid='"
-							+ userid + "'  and password='" + oldpassword + "'");
-			int count = ps.executeUpdate();
-			return (count > 0);
-		} catch (SQLException e) {
-			e.printStackTrace();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-
-		}
-		return false;
-
-	}
+	
 
 	public boolean validateUser(String userid, String password) {
 		try {
 			// Check the logged jobseeker is valid user or not
 			PreparedStatement ps = con
-					.prepareStatement("select * FROM blueprintsdb.employee WHERE userid='"
+					.prepareStatement("select * FROM brisbane_bicycle_racks.users WHERE user='"
 							+ userid + "'  and password='" + password + "'");
 			ResultSet resultSet = ps.executeQuery();
 			if (resultSet.next()) {

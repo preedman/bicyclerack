@@ -8,9 +8,10 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.bean.ManagedBean;
 
 import com.reedmanit.bicyclerack.dao.LoginDAO;
+import javax.faces.bean.RequestScoped;
 
 @ManagedBean
-@ViewScoped
+@RequestScoped
 public class LoginController implements Serializable {
 
 	/**
@@ -21,6 +22,7 @@ public class LoginController implements Serializable {
 	private String username;
 	private String password;
 	private String newpassword;
+        private BicycleTableController rackController;
 
 	public LoginController() {
 		super();
@@ -35,7 +37,9 @@ public class LoginController implements Serializable {
 		isValidUser = dao.validateUser(username, password);
 
 		if (isValidUser) {
-			return "/views/index.xhtml?faces-redirect=true";
+                       // rackController = new BicycleTableController();
+                       System.out.println("Valid User");
+			return "/views/bicycletable.xhtml?faces-redirect=true";
 		} else {
 			msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error",
 					"Invalid credentials");

@@ -18,8 +18,9 @@ public class LoginDAO {
 	public LoginDAO() throws SQLException {
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/brisbane_bicycle_racks");
+			ds = (DataSource) ctx.lookup("jdbc/bicyclerack");
 			if (ds == null) {
+                                System.out.println("DS not found");
 				throw new SQLException("Can't get data source");
 			}
 			// get database connection

@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/masterTemplate.xhtml">
+    <ui:define name="content">
+        <p:dataTable var="racks" value="#{bicycleTableController.bicycleRacks}">
+            <p:column headerText="Id">
+                <h:outputText value="#{racks.id}" />
+            </p:column>
+
+            <p:column headerText="Type">
+                <h:outputText value="#{racks.type}" />
+            </p:column>
+
+            <p:column headerText="Address">
+                <h:outputText value="#{racks.address}" />
+            </p:column>
+
+            <p:column headerText="Location">
+                <h:outputText value="#{racks.location}" />
+            </p:column>
+            <p:column headerText="Lat">
+                <h:outputText value="#{racks.lat}" />
+            </p:column>
+            <p:column headerText="Lng">
+                <h:outputText value="#{racks.lng}" />
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+</ui:composition>
+

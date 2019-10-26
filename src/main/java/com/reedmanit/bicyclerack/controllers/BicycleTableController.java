@@ -39,12 +39,8 @@ public class BicycleTableController implements Serializable {
     @PostConstruct
     public void init() {
         System.out.println("INIT");
-        try {
-            rackDAO = new BicycleRackDAO();
-            setBicycleRacks(rackDAO.extractBicycleRacks());
-        } catch (SQLException se) {
-            se.printStackTrace();
-        }
+        rackDAO = new BicycleRackDAO(com.reedmanit.bicyclerack.util.Connection.getInstance().getDBConnection());
+        setBicycleRacks(rackDAO.extractBicycleRacks());
     }
 
     /**

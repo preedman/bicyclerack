@@ -8,71 +8,81 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.bean.ManagedBean;
 
 import com.reedmanit.bicyclerack.dao.LoginDAO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.RequestScoped;
 
 @ManagedBean
 @RequestScoped
 public class LoginController implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	private String username;
-	private String password;
-	private String newpassword;
-        private BicycleTableController rackController;
+    private String username;
+    private String password;
+    private String newpassword;
+    
 
-	public LoginController() {
-		super();
-	}
+    public LoginController() {
+        super();
+    }
 
-	public String validateUser() throws SQLException {
-		FacesMessage msg = null;
-		boolean isValidUser = false;
-		
+    @PostConstruct
+    public void init()  {
+        
+        try {
+            com.reedmanit.bicyclerack.util.Connection.getInstance().createDBConnection();
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-		LoginDAO dao = new LoginDAO();
-		isValidUser = dao.validateUser(username, password);
+    public String validateUser() throws SQLException {
+        FacesMessage msg = null;
+        boolean isValidUser = false;
 
-		if (isValidUser) {
-                       // rackController = new BicycleTableController();
-                       System.out.println("Valid User");
-			return "/views/bicycletable.xhtml?faces-redirect=true";
-		} else {
-			msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error",
-					"Invalid credentials");
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-			return null;
-		}
+        LoginDAO dao = new LoginDAO(com.reedmanit.bicyclerack.util.Connection.getInstance().getDBConnection());
+        isValidUser = dao.validateUser(username, password);
 
-	}
+        if (isValidUser) {
 
-	
+            System.out.println("Valid User");
+            return "/views/bicycletable.xhtml?faces-redirect=true";
+        } else {
+            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error",
+                    "Invalid credentials");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+            return null;
+        }
 
-	public String getUsername() {
-		return username;
-	}
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public String getNewpassword() {
-		return newpassword;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setNewpassword(String newpassword) {
-		this.newpassword = newpassword;
-	}
+    public String getNewpassword() {
+        return newpassword;
+    }
+
+    public void setNewpassword(String newpassword) {
+        this.newpassword = newpassword;
+    }
 
 }

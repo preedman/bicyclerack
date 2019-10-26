@@ -15,23 +15,8 @@ public class LoginDAO {
 	private DataSource ds;
 	Connection con;
 
-	public LoginDAO() throws SQLException {
-		try {
-			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("jdbc/bicyclerack");
-			if (ds == null) {
-                                System.out.println("DS not found");
-				throw new SQLException("Can't get data source");
-			}
-			// get database connection
-			con = ds.getConnection();
-			if (con == null) {
-				throw new SQLException("Can't get database connection");
-			}
-
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
+	public LoginDAO(Connection aConnection)  {
+		con = aConnection;
 
 	}
 

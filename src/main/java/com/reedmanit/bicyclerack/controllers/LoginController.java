@@ -25,15 +25,14 @@ public class LoginController implements Serializable {
     private String username;
     private String password;
     private String newpassword;
-    
 
     public LoginController() {
         super();
     }
 
     @PostConstruct
-    public void init()  {
-        
+    public void init() {
+
         try {
             com.reedmanit.bicyclerack.util.Connection.getInstance().createDBConnection();
         } catch (SQLException ex) {

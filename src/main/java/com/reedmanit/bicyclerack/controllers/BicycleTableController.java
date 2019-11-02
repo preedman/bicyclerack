@@ -24,8 +24,9 @@ import javax.faces.view.ViewScoped;
 @Named(value = "bicycleTableController")
 @RequestScoped
 public class BicycleTableController implements Serializable {
-    
-    private List<BicycleRack> bicycleRacks; 
+
+    private List<BicycleRack> bicycleRacks;
+    private List<BicycleRack> filtererBicycleRacks;
     private BicycleRackDAO rackDAO;
 
     /**
@@ -33,9 +34,9 @@ public class BicycleTableController implements Serializable {
      */
     public BicycleTableController() {
         System.out.println("Construct");
-        
+
     }
-    
+
     @PostConstruct
     public void init() {
         System.out.println("INIT");
@@ -56,6 +57,19 @@ public class BicycleTableController implements Serializable {
     public void setBicycleRacks(List<BicycleRack> bicycleRacks) {
         this.bicycleRacks = bicycleRacks;
     }
-    
-    
+
+    /**
+     * @return the filtererBicycleRacks
+     */
+    public List<BicycleRack> getFiltererBicycleRacks() {
+        return filtererBicycleRacks;
+    }
+
+    /**
+     * @param filtererBicycleRacks the filtererBicycleRacks to set
+     */
+    public void setFiltererBicycleRacks(List<BicycleRack> filtererBicycleRacks) {
+        this.filtererBicycleRacks = filtererBicycleRacks;
+    }
+
 }

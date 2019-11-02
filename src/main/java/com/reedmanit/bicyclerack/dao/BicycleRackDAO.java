@@ -23,44 +23,44 @@ import javax.sql.DataSource;
  * @author paul
  */
 public class BicycleRackDAO {
-    
+
     private DataSource ds;
     Connection con;
-    
+
     public BicycleRackDAO(Connection aConnection) {
         con = aConnection;
     }
-    
+
     public List<BicycleRack> extractBicycleRacks() {
-        
+
         List<BicycleRack> racks = new ArrayList<BicycleRack>();
         System.out.println("Extracting racks");
         try {
-			// Check the logged jobseeker is valid user or not
-			PreparedStatement ps = con
-					.prepareStatement("SELECT * FROM brisbane_bicycle_racks.location");							
-			ResultSet resultSet = ps.executeQuery();
-                       
-			while (resultSet.next()) {
-                            BicycleRack br = new BicycleRack();
-                            br.setId(resultSet.getInt(1));
-                            br.setAddress(resultSet.getString(2));
-                            br.setLocation(resultSet.getString(3));
-                            br.setCapacity(resultSet.getInt(4));
-                            br.setType(resultSet.getString(5));
-                            br.setLat(resultSet.getFloat(6));
-                            br.setLng(resultSet.getFloat(7));
-                            racks.add(br);
-                        }
+            // Check the logged jobseeker is valid user or not
+            PreparedStatement ps = con
+                    .prepareStatement("SELECT * FROM brisbane_bicycle_racks.location");
+            ResultSet resultSet = ps.executeQuery();
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+            while (resultSet.next()) {
+                BicycleRack br = new BicycleRack();
+                br.setId(resultSet.getInt(1));
+                br.setAddress(resultSet.getString(2));
+                br.setLocation(resultSet.getString(3));
+                br.setCapacity(resultSet.getInt(4));
+                br.setType(resultSet.getString(5));
+                br.setLat(resultSet.getFloat(6));
+                br.setLng(resultSet.getFloat(7));
+                racks.add(br);
+            }
 
-		} catch (Exception e) {
-			e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
 
-		}
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
         return racks;
     }
-    
+
 }

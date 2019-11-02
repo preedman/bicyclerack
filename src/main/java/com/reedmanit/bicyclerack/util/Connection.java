@@ -26,14 +26,15 @@ public class Connection {
     private Connection() {
 
     }
+
     // static method to create instance of Singleton class 
-    public static Connection getInstance() 
-    { 
-        if (instance == null) 
-            instance = new Connection(); 
-  
-        return instance; 
-    } 
+    public static Connection getInstance() {
+        if (instance == null) {
+            instance = new Connection();
+        }
+
+        return instance;
+    }
 
     public void createDBConnection() throws SQLException {
 
@@ -41,7 +42,7 @@ public class Connection {
             Context ctx = new InitialContext();
             ds = (DataSource) ctx.lookup("jdbc/bicyclerack");
             if (ds == null) {
-                
+
                 throw new SQLException("Can't get data source");
             }
             // get database connection
@@ -53,15 +54,13 @@ public class Connection {
         } catch (NamingException e) {
             e.printStackTrace();
         }
-        
-        
 
     }
-    
-    public java.sql.Connection getDBConnection () {
+
+    public java.sql.Connection getDBConnection() {
         return con;
     }
-    
+
     public void close() {
         try {
             con.close();

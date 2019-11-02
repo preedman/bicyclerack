@@ -5,12 +5,15 @@
  */
 package com.reedmanit.bicyclerack.object;
 
+import java.io.Serializable;
+
 /**
  *
  * @author paul
  */
-public class BicycleRack {
+public class BicycleRack implements Serializable {
     
+    private static final long serialVersionUID = 1L;
     private Integer id;
     private String address;
     private String location;
@@ -18,9 +21,9 @@ public class BicycleRack {
     private String type;
     private Float lat;
     private Float lng;
-    
+
     public BicycleRack() {
-        
+
     }
 
     /**
@@ -120,7 +123,5 @@ public class BicycleRack {
     public void setLng(Float lng) {
         this.lng = lng;
     }
-    
-    
-    
+
 }

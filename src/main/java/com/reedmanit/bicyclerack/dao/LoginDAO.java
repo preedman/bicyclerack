@@ -12,36 +12,34 @@ import javax.sql.DataSource;
 
 public class LoginDAO {
 
-	private DataSource ds;
-	Connection con;
+    private DataSource ds;
+    Connection con;
 
-	public LoginDAO(Connection aConnection)  {
-		con = aConnection;
+    public LoginDAO(Connection aConnection) {
+        con = aConnection;
 
-	}
+    }
 
-	
+    public boolean validateUser(String userid, String password) {
+        try {
+            // Check the logged jobseeker is valid user or not
+            PreparedStatement ps = con
+                    .prepareStatement("select * FROM brisbane_bicycle_racks.users WHERE user='"
+                            + userid + "'  and password='" + password + "'");
+            ResultSet resultSet = ps.executeQuery();
+            if (resultSet.next()) {
+                return true;
+            } else {
+                return false;
+            }
 
-	public boolean validateUser(String userid, String password) {
-		try {
-			// Check the logged jobseeker is valid user or not
-			PreparedStatement ps = con
-					.prepareStatement("select * FROM brisbane_bicycle_racks.users WHERE user='"
-							+ userid + "'  and password='" + password + "'");
-			ResultSet resultSet = ps.executeQuery();
-			if (resultSet.next()) {
-				return true;
-			} else {
-				return false;
-			}
+        } catch (SQLException e) {
+            e.printStackTrace();
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
 
-		} catch (Exception e) {
-			e.printStackTrace();
-
-		}
-		return false;
-	}
+        }
+        return false;
+    }
 }

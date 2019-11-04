@@ -21,6 +21,8 @@ public class BicycleRack implements Serializable {
     private String type;
     private Float lat;
     private Float lng;
+    private String streetView;
+    private static String url = "http://maps.google.com/maps?q=&layer=c&cbll=";
 
     public BicycleRack() {
 
@@ -122,6 +124,14 @@ public class BicycleRack implements Serializable {
      */
     public void setLng(Float lng) {
         this.lng = lng;
+    }
+    
+    public void setStreetView() {
+        streetView = url + this.lat + "," + this.lng;
+    }
+    
+    public String getStreetView() {
+        return this.streetView;
     }
 
 }

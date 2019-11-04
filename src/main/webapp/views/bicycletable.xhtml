@@ -29,12 +29,18 @@
                 <p:column headerText="Location">
                     <h:outputText value="#{racks.location}" />
                 </p:column>
+                <p:column headerText="Street View">
+                    <h:outputLink value="#{racks.streetView}" target="_blank" >Street View</h:outputLink>
+                    
+                </p:column>
+                <!--
                 <p:column headerText="Lat">
                     <h:outputText value="#{racks.lat}" />
                 </p:column>
                 <p:column headerText="Lng">
                     <h:outputText value="#{racks.lng}" />
                 </p:column>
+                -->
             </p:dataTable>
         </h:form>
     </ui:define>

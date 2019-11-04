@@ -26,6 +26,7 @@ public class BicycleRackDAO {
 
     private DataSource ds;
     Connection con;
+    private List<BicycleRack> racks;
 
     public BicycleRackDAO(Connection aConnection) {
         con = aConnection;
@@ -33,7 +34,7 @@ public class BicycleRackDAO {
 
     public List<BicycleRack> extractBicycleRacks() {
 
-        List<BicycleRack> racks = new ArrayList<BicycleRack>();
+        racks = new ArrayList<BicycleRack>();
         System.out.println("Extracting racks");
         try {
             // Check the logged jobseeker is valid user or not
@@ -50,6 +51,7 @@ public class BicycleRackDAO {
                 br.setType(resultSet.getString(5));
                 br.setLat(resultSet.getFloat(6));
                 br.setLng(resultSet.getFloat(7));
+                br.setStreetView();
                 racks.add(br);
             }
 
@@ -60,6 +62,10 @@ public class BicycleRackDAO {
             e.printStackTrace();
 
         }
+        return racks;
+    }
+    
+    public List<BicycleRack> gerRacks() {
         return racks;
     }
 

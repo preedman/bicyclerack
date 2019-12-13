@@ -14,13 +14,13 @@ import java.io.Serializable;
 public class BicycleRack implements Serializable {
     
     private static final long serialVersionUID = 1L;
-    private Integer id;
+    private String id;
     private String address;
     private String location;
-    private Integer capacity;
+    private String capacity;
     private String type;
-    private Float lat;
-    private Float lng;
+    private String lat;
+    private String lng;
     private String streetView;
     private static String url = "http://maps.google.com/maps?q=&layer=c&cbll=";
 
@@ -31,14 +31,14 @@ public class BicycleRack implements Serializable {
     /**
      * @return the id
      */
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -73,14 +73,14 @@ public class BicycleRack implements Serializable {
     /**
      * @return the capacity
      */
-    public Integer getCapacity() {
+    public String getCapacity() {
         return capacity;
     }
 
     /**
      * @param capacity the capacity to set
      */
-    public void setCapacity(Integer capacity) {
+    public void setCapacity(String capacity) {
         this.capacity = capacity;
     }
 
@@ -101,28 +101,28 @@ public class BicycleRack implements Serializable {
     /**
      * @return the lat
      */
-    public Float getLat() {
+    public String getLat() {
         return lat;
     }
 
     /**
      * @param lat the lat to set
      */
-    public void setLat(Float lat) {
+    public void setLat(String lat) {
         this.lat = lat;
     }
 
     /**
      * @return the lng
      */
-    public Float getLng() {
+    public String getLng() {
         return lng;
     }
 
     /**
      * @param lng the lng to set
      */
-    public void setLng(Float lng) {
+    public void setLng(String lng) {
         this.lng = lng;
     }
     

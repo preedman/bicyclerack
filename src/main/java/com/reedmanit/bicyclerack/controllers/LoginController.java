@@ -33,11 +33,11 @@ public class LoginController implements Serializable {
     @PostConstruct
     public void init() {
 
-        try {
-            com.reedmanit.bicyclerack.util.Connection.getInstance().createDBConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+   //     try {
+   //         com.reedmanit.bicyclerack.util.Connection.getInstance().createDBConnection();
+   //     } catch (SQLException ex) {
+   //         Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+     //   }
     }
 
     public String validateUser() throws SQLException {

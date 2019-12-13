@@ -44,13 +44,13 @@ public class BicycleRackDAO {
 
             while (resultSet.next()) {
                 BicycleRack br = new BicycleRack();
-                br.setId(resultSet.getInt(1));
+              //  br.setId(resultSet.getInt(1));
                 br.setAddress(resultSet.getString(2));
                 br.setLocation(resultSet.getString(3));
-                br.setCapacity(resultSet.getInt(4));
+            //    br.setCapacity(resultSet.getInt(4));
                 br.setType(resultSet.getString(5));
-                br.setLat(resultSet.getFloat(6));
-                br.setLng(resultSet.getFloat(7));
+              //  br.setLat(resultSet.getFloat(6));
+               // br.setLng(resultSet.getFloat(7));
                 br.setStreetView();
                 racks.add(br);
             }

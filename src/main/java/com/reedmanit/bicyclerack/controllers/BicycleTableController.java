@@ -7,11 +7,15 @@ package com.reedmanit.bicyclerack.controllers;
 
 import com.reedmanit.bicyclerack.dao.BicycleRackDAO;
 import com.reedmanit.bicyclerack.object.BicycleRack;
+import com.reedmanit.bicyclerack.util.RackCache;
 import java.io.IOException;
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -19,6 +23,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import javax.servlet.ServletContext;
 
 /**
  *
@@ -58,8 +63,16 @@ public class BicycleTableController implements Serializable {
     @PostConstruct
     public void init() {
         System.out.println("INIT");
-        rackDAO = new BicycleRackDAO(com.reedmanit.bicyclerack.util.Connection.getInstance().getDBConnection());
-        setBicycleRacks(rackDAO.extractBicycleRacks());
+        ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+        RackCache theCache = (RackCache) servletContext.getAttribute("cache");
+        bicycleRacks = new ArrayList<BicycleRack>();
+        ConcurrentHashMap<String, BicycleRack> Map = theCache.getCache();
+        for (Map.Entry<String, BicycleRack> entry : Map.entrySet()) {
+            BicycleRack r = entry.getValue();
+            bicycleRacks.add(r);
+           // System.out.println(entry.getKey() + " = " + entry.getValue());
+        }
+        
     }
 
     /**

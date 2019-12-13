@@ -34,6 +34,11 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
+    
+    <listener>
+        <description>ServletContextListener</description>
+        <listener-class>com.reedmanit.bicyclerack.util.CacheListener</listener-class>
+    </listener>
     <!--
     <listener>
             <listener-class>com.sun.faces.config.ConfigureListener</listener-class>

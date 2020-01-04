@@ -35,14 +35,13 @@ public class FileConnection {
 
         Context context = new InitialContext();
         Context envContext = (Context) context.lookup("java:/comp/env");
-        
+
         dataLocation = (String) envContext.lookup("rackdata");
-        
+
         System.out.println("Data Location " + dataLocation);
-        
 
     }
-    
+
     public String getDataLocation() {
         return dataLocation;
     }

@@ -16,27 +16,27 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author paul
  */
 public class RackCache {
-    
+
     private static ConcurrentHashMap<String, BicycleRack> dataCache;
-    
+
     public RackCache() {
         dataCache = new ConcurrentHashMap<String, BicycleRack>();
     }
-    
-    public void loadCache(String cacheLocation) throws IOException{
-        
+
+    public void loadCache(String cacheLocation) throws IOException {
+
         String line = "";
         String cvsSplitBy = ",";
-        
+
         try (BufferedReader br = new BufferedReader(new FileReader(cacheLocation))) {
 
             while ((line = br.readLine()) != null) {
 
                 // use comma as separator
                 String[] data = line.split(cvsSplitBy);
-                
+
                 BicycleRack r = new BicycleRack();
-                
+
                 r.setId(data[0]);
                 r.setAddress(data[1]);
                 r.setLocation(data[2]);
@@ -45,20 +45,17 @@ public class RackCache {
                 r.setLat(data[5]);
                 r.setLng(data[6]);
                 r.setStreetView();
-                
+
                 dataCache.put(data[0], r);
-                
-                
-                
 
             }
 
         } catch (IOException e) {
             throw e;
         }
-        
+
     }
-    
+
     public ConcurrentHashMap getCache() {
         return dataCache;
     }

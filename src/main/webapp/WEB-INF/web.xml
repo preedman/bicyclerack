@@ -14,7 +14,10 @@
         <param-value>true</param-value>
     </context-param>
     <welcome-file-list>
+        <!--
         <welcome-file>views/login.xhtml</welcome-file>
+            -->
+        <welcome-file>login.xhtml</welcome-file>
     </welcome-file-list>  
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
@@ -57,5 +60,30 @@
             30
         </session-timeout>
     </session-config>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>rackconstraints</web-resource-name>
+            <url-pattern>/views/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+                
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>users</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
+    
+    
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/login.xhtml</form-login-page>
+            <!-- We don't actually need an error page (since the form does not use j_security_check), but as it is
+            required here, we just repeat the login page -->
+            <form-error-page>/login.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
     
 </web-app>

@@ -10,7 +10,7 @@
                 <p:messages id="login"></p:messages>
                 <h:panelGrid columns="3" cellpadding="5">
                     <h:outputLabel for="username" value="Username:" />
-                    <p:inputText value="#{loginController.username}" id="username"
+                    <p:inputText value="#{loginManager.username}" id="username"
                                  required="true" requiredMessage="Username cannot be empty"
                                  validatorMessage="The length of the username exist between 3 and 8 chapters"
                                  label="username">
@@ -19,7 +19,7 @@
                     <p:watermark for="username" value="Enter username" />
 
                     <h:outputLabel for="password" value="Password:" />
-                    <p:password value="#{loginController.password}" id="password"
+                    <p:password value="#{loginManager.password}" id="password"
                                 required="true" requiredMessage="Password cannot be empty"
                                 />
                     <p:watermark for="password" value="Enter password" />
@@ -27,7 +27,7 @@
                     <h:outputText></h:outputText>
                     <p:commandButton id="loginButton" value="Login"
                                      update="login" style="float:right"
-                                     action="#{loginController.validateUser}" ajax="false" />
+                                     action="#{loginManager.validateUser()}" ajax="false" />
 
 
                 </h:panelGrid>

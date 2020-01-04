@@ -1,6 +1,5 @@
 package com.reedmanit.bicyclerack.util;
 
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
@@ -27,14 +26,14 @@ public class CacheListener implements ServletContextListener {
             theCache = new RackCache();
             FileConnection.getInstance().connectToData();
             theCache.loadCache(FileConnection.getInstance().getDataLocation());
-            
+
         } catch (Exception ex) {
             Logger.getLogger(CacheListener.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         sc.setAttribute("cache", theCache);
-  //      sc.setAttribute(string, sc);
-      //  sc.setAttribute("memory", new Memory());
+        //      sc.setAttribute(string, sc);
+        //  sc.setAttribute("memory", new Memory());
     }
 
     @Override

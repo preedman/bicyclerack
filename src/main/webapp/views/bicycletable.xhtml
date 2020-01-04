@@ -8,10 +8,10 @@
         <h:form id="bicycleform">
             <p:dataTable var="racks" value="#{bicycleTableController.bicycleRacks}" filteredValue="#{bicycleTableController.filtererBicycleRacks}" 
                          widgetVar="bicyclerackTable"
-                                 rows="15" paginator="true"
-                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                 rowsPerPageTemplate="5,10,15" sortOrder="ascending" sortBy="#{racks.address}"
-                                 emptyMessage="No bicycle racks found" >
+                         rows="15" paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15" sortOrder="ascending" sortBy="#{racks.address}"
+                         emptyMessage="No bicycle racks found" >
 
                 <!--
                 <p:column headerText="Id" >
@@ -23,7 +23,7 @@
                     <f:facet name="header">
                         <h:outputText value="Filter by Type" />
                     </f:facet>
-                     <h:outputText value="#{racks.type}" />
+                    <h:outputText value="#{racks.type}" />
                 </p:column>
 
                 <p:column headerText="Address" sortBy="#{racks.address}" filterBy="#{racks.address}" filterMatchMode="contains" >
@@ -38,7 +38,7 @@
                 </p:column>
                 <p:column headerText="Street View">
                     <h:outputLink value="#{racks.streetView}" target="_blank" >Street View</h:outputLink>
-                    
+
                 </p:column>
                 <!--
                 <p:column headerText="Lat">

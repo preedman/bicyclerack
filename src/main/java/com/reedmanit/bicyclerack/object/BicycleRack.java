@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author paul
  */
 public class BicycleRack implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
     private String id;
     private String address;
@@ -125,11 +125,11 @@ public class BicycleRack implements Serializable {
     public void setLng(String lng) {
         this.lng = lng;
     }
-    
+
     public void setStreetView() {
         streetView = url + this.lat + "," + this.lng;
     }
-    
+
     public String getStreetView() {
         return this.streetView;
     }
